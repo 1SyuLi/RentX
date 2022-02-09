@@ -10,7 +10,21 @@ import {
    HeaderContent
 } from './styles';
 
+import { Car } from '../../Components/Car';
+
 export function Home(){
+
+   const CarData = {
+      brand: 'AUDI',
+      name: 'RS 5 Coupé',
+      rent: {
+          period: 'AO DIA',
+          price: 120,
+      },
+      thumbnail: 'https://images-ext-2.discordapp.net/external/bwumaL3tGp9p9XiCjbi9BgO_jgrd00BmeKLLv30OaKw/https/www.pngmart.com/files/4/Chevrolet-Camaro-PNG-Image.png',
+   }
+
+
    return(
      <Container>
         <StatusBar 
@@ -31,6 +45,8 @@ export function Home(){
                </TotalCars>
             </HeaderContent>
          </Header>
+
+         <Car  data={CarData}/>
 
      </Container>
    );
