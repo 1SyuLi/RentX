@@ -1,5 +1,6 @@
 import React from 'react';
 import { Home } from './src/Screens/Home';
+import { CarDetails } from './src/Screens/CarDetails';
 import AppLoading from 'expo-app-loading';
 
 import { ThemeProvider } from 'styled-components';
@@ -33,7 +34,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <CarDetails />
     </ThemeProvider>
   )
 }
