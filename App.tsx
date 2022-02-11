@@ -1,18 +1,19 @@
 import React from 'react';
 import { Home } from './src/Screens/Home';
 import { CarDetails } from './src/Screens/CarDetails';
+import { Scheduling } from './src/Screens/Scheduling';
 import AppLoading from 'expo-app-loading';
 
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
 
-import { 
+import {
   useFonts,
   Inter_400Regular,
   Inter_500Medium,
 } from '@expo-google-fonts/inter';
 
-import { 
+import {
   Archivo_400Regular,
   Archivo_500Medium,
   Archivo_600SemiBold,
@@ -28,13 +29,13 @@ export default function App() {
     Archivo_600SemiBold,
   });
 
-  if(!fontsLoaded){
+  if (!fontsLoaded) {
     return <AppLoading />
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <CarDetails />
+      <Scheduling />
     </ThemeProvider>
   )
 }
