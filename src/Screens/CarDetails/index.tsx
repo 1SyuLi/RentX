@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native';
 import { BackButton } from '../../Components/BackButton';
 import { ImageSlider } from '../../Components/ImageSlider';
 import { Accessory } from '../../Components/Accessory';
+import { Button } from '../../Components/Button';
 
 import speedSvg from '../../assets/speed.svg';
 import accelerationSvg from '../../assets/acceleration.svg';
@@ -24,6 +25,7 @@ import {
    Price,
    About,
    Accessories,
+   Footer,
 } from './styles';
 
 export function CarDetails(){
@@ -71,9 +73,11 @@ export function CarDetails(){
                na praça Real Maestranza de Sevilla. 
                É um belíssimo carro para quem gosta de acelerar.
             </About>
-
-            
          </Content>
+
+         <Footer>
+            <Button title='Confirmar'/>
+         </Footer>
      </Container>
    );
 }

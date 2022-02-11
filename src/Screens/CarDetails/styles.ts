@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import { RFValue } from 'react-native-responsive-fontsize';
-import { Text } from 'react-native-paper';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
    flex: 1;
@@ -82,4 +82,10 @@ export const Accessories = styled.View`
 
    align-items: center;
    justify-content: space-between;
+`;
+
+export const Footer = styled.View`
+   width: 100%;
+   background-color: ${({theme}) => theme.colors.background_secondary};
+   padding: 24px 24px ${getBottomSpace() + 24}px;
 `;
