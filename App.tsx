@@ -2,6 +2,7 @@ import React from 'react';
 import { Home } from './src/Screens/Home';
 import { CarDetails } from './src/Screens/CarDetails';
 import { Scheduling } from './src/Screens/Scheduling';
+import { SchedulingDetails } from './src/Screens/SchedulingDetails';
 import AppLoading from 'expo-app-loading';
 
 import { ThemeProvider } from 'styled-components';
@@ -35,7 +36,7 @@ export default function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Scheduling />
+            <SchedulingDetails />
         </ThemeProvider>
     )
 }
