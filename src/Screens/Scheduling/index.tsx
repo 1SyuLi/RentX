@@ -2,58 +2,69 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { BackButton } from '../../Components/BackButton';
 import { useTheme } from 'styled-components';
-
+import { Button } from '../../Components/Button';
 import ArrowSvg from '../../assets/arrow.svg';
+import { Calendar } from '../../Components/Calendar';
 
 import {
-   Container,
-   Header,
-   Title,
-   RentalPeriod,
-   DateInfo,
-   DateTitle,
-   DateValue,
+    Container,
+    Header,
+    Title,
+    RentalPeriod,
+    DateInfo,
+    DateTitle,
+    DateValue,
+    Content,
+    Footer,
 } from './styles';
 
 export function Scheduling() {
 
-   const theme = useTheme();
+    const theme = useTheme();
 
 
-   return (
-      <Container>
-         <StatusBar
-            barStyle="light-content"
-            backgroundColor="transparent"
-            translucent
-         />
-
-         <Header>
-            <BackButton
-               onPress={() => { }}
-               color={theme.colors.shape}
+    return (
+        <Container>
+            <StatusBar
+                barStyle="light-content"
+                backgroundColor="transparent"
+                translucent
             />
 
-            <Title>
-               Escolha uma {'\n'}
-               data de início e {'\n'}
-               fim do aluguel
-            </Title>
+            <Header>
+                <BackButton
+                    onPress={() => { }}
+                    color={theme.colors.shape}
+                />
 
-            <RentalPeriod>
-               <DateInfo>
-                  <DateTitle>DE</DateTitle>
-                  <DateValue selected={false}>11/02/2022</DateValue>
-               </DateInfo>
+                <Title>
+                    Escolha uma {'\n'}
+                    data de início e {'\n'}
+                    fim do aluguel
+                </Title>
 
-               <ArrowSvg />
+                <RentalPeriod>
+                    <DateInfo>
+                        <DateTitle>DE</DateTitle>
+                        <DateValue selected={false}>11/02/2022</DateValue>
+                    </DateInfo>
 
-               <DateInfo>
-                  <DateTitle>ATÉ</DateTitle>
-                  <DateValue selected={false}>11/02/2022</DateValue>
-               </DateInfo>
-            </RentalPeriod>
-         </Header>
-      </Container>
-   );
+                    <ArrowSvg />
+
+                    <DateInfo>
+                        <DateTitle>ATÉ</DateTitle>
+                        <DateValue selected={false}>11/02/2022</DateValue>
+                    </DateInfo>
+                </RentalPeriod>
+            </Header>
+
+            <Content>
+                <Calendar />
+            </Content>
+
+            <Footer>
+                <Button title='Confirmar' />
+            </Footer>
+        </Container>
+    );
 }

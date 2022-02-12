@@ -2,19 +2,19 @@ import React from 'react';
 import Gasoline from '../../assets/gasoline.svg';
 
 import {
-   Container,
-   Details,
-   Brand,
-   Name,
-   About,
-   Rent,
-   Period,
-   Price,
-   Type,
-   CarImage,
+    Container,
+    Details,
+    Brand,
+    Name,
+    About,
+    Rent,
+    Period,
+    Price,
+    Type,
+    CarImage,
 } from './styles';
 
-interface CarData{
+interface CarData {
     brand: string;
     name: string;
     rent: {
@@ -24,37 +24,37 @@ interface CarData{
     thumbnail: string;
 }
 
-interface Props{
+interface Props {
     data: CarData;
 }
 
-export function Car({ data }:Props){
-   return(
-     <Container>
-        <Details>
-            <Brand>{data.brand}</Brand>
-            <Name>{data.name}</Name>
+export function Car({ data }: Props) {
+    return (
+        <Container>
+            <Details>
+                <Brand>{data.brand}</Brand>
+                <Name>{data.name}</Name>
 
-            <About>
-                <Rent>
-                    <Period>{data.rent.period}</Period>
-                    <Price>{`R$ ${data.rent.price}`}</Price>
-                </Rent>
+                <About>
+                    <Rent>
+                        <Period>{data.rent.period}</Period>
+                        <Price>{`R$ ${data.rent.price}`}</Price>
+                    </Rent>
 
-                <Type>
-                    <Gasoline 
+                    <Type>
+                        <Gasoline
                         // width={20}
                         // height={20}
-                    />
-                </Type>
-            </About>
-        </Details>
+                        />
+                    </Type>
+                </About>
+            </Details>
 
 
-        <CarImage 
-            source={{ uri: data.thumbnail}}
-            resizeMode='contain'
-        />
-     </Container>
-   );
+            <CarImage
+                source={{ uri: data.thumbnail }}
+                resizeMode='contain'
+            />
+        </Container>
+    );
 }

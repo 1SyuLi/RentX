@@ -13,71 +13,71 @@ import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
 
 import {
-   Container,
-   Header,
-   Content,
-   Details,
-   Description,
-   Brand,
-   Name,
-   Rent,
-   Period,
-   Price,
-   About,
-   Accessories,
-   Footer,
+    Container,
+    Header,
+    Content,
+    Details,
+    Description,
+    Brand,
+    Name,
+    Rent,
+    Period,
+    Price,
+    About,
+    Accessories,
+    Footer,
 } from './styles';
 
-export function CarDetails(){
-   return(
-     <Container>
-         <StatusBar 
-            barStyle="dark-content" 
-            backgroundColor="transparent" 
-         />
+export function CarDetails() {
+    return (
+        <Container>
+            <StatusBar
+                barStyle="dark-content"
+                backgroundColor="transparent"
+            />
 
 
-         <Header>
-             <BackButton onPress={() => {}}/>
-         </Header>
+            <Header>
+                <BackButton onPress={() => { }} />
+            </Header>
 
 
-         <ImageSlider 
-            imagesUrl={['https://images-ext-2.discordapp.net/external/bwumaL3tGp9p9XiCjbi9BgO_jgrd00BmeKLLv30OaKw/https/www.pngmart.com/files/4/Chevrolet-Camaro-PNG-Image.png']}
-         />
+            <ImageSlider
+                imagesUrl={['https://images-ext-2.discordapp.net/external/bwumaL3tGp9p9XiCjbi9BgO_jgrd00BmeKLLv30OaKw/https/www.pngmart.com/files/4/Chevrolet-Camaro-PNG-Image.png']}
+            />
 
-         <Content>
-            <Details>
-               <Description>
-                  <Brand>Lamborghini</Brand>
-                  <Name>Huracan</Name>
-               </Description>
+            <Content>
+                <Details>
+                    <Description>
+                        <Brand>Lamborghini</Brand>
+                        <Name>Huracan</Name>
+                    </Description>
 
-               <Rent>
-                  <Period>Ao dia</Period>
-                  <Price>R$ 580</Price>
-               </Rent>
-            </Details>
+                    <Rent>
+                        <Period>Ao dia</Period>
+                        <Price>R$ 580</Price>
+                    </Rent>
+                </Details>
 
-            <Accessories>
-               <Accessory name="380Km/h" icon={speedSvg}/>  
-               <Accessory name="3.2s" icon={accelerationSvg}/>  
-               <Accessory name="800 HP" icon={forceSvg}/>  
-               <Accessory name="Gasoline" icon={gasolineSvg}/>  
-               <Accessory name="Auto" icon={exchangeSvg}/>  
-               <Accessory name="2 Pessoas" icon={peopleSvg}/>  
-            </Accessories>
+                <Accessories>
+                    <Accessory name="380Km/h" icon={speedSvg} />
+                    <Accessory name="3.2s" icon={accelerationSvg} />
+                    <Accessory name="800 HP" icon={forceSvg} />
+                    <Accessory name="Gasoline" icon={gasolineSvg} />
+                    <Accessory name="Auto" icon={exchangeSvg} />
+                    <Accessory name="2 Pessoas" icon={peopleSvg} />
+                </Accessories>
 
-            <About>
-               Este é automóvel desportivo. Surgiu do lendário touro de lide indultado 
-               na praça Real Maestranza de Sevilla. 
-               É um belíssimo carro para quem gosta de acelerar.
-            </About>
-         </Content>
+                <About>
+                    Este é automóvel desportivo. Surgiu do lendário touro de lide indultado
+                    na praça Real Maestranza de Sevilla.
+                    É um belíssimo carro para quem gosta de acelerar.
+                </About>
+            </Content>
 
-         <Footer>
-            <Button title='Confirmar'/>
-         </Footer>
-     </Container>
-   );
+            <Footer>
+                <Button title='Confirmar' />
+            </Footer>
+        </Container>
+    );
 }
