@@ -11,6 +11,7 @@ import forceSvg from '../../assets/force.svg';
 import gasolineSvg from '../../assets/gasoline.svg';
 import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
+import { useNavigation } from '@react-navigation/native';
 
 import {
     Container,
@@ -29,6 +30,10 @@ import {
 } from './styles';
 
 export function CarDetails() {
+
+    const navigation = useNavigation<any>();
+
+
     return (
         <Container>
             <StatusBar
@@ -38,7 +43,7 @@ export function CarDetails() {
 
 
             <Header>
-                <BackButton onPress={() => { }} />
+                <BackButton onPress={() => navigation.goBack()} />
             </Header>
 
 
@@ -76,7 +81,7 @@ export function CarDetails() {
             </Content>
 
             <Footer>
-                <Button title='Confirmar' />
+                <Button title='Confirmar' onPress={() => navigation.navigate('Scheduling')} />
             </Footer>
         </Container>
     );

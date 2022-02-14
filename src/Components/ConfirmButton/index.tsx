@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 import { RectButtonProps } from 'react-native-gesture-handler';
 
 import {
@@ -7,13 +8,13 @@ import {
 } from './styles';
 
 
-interface Props extends RectButtonProps {
+interface Props extends TouchableOpacityProps {
     title: string,
 }
 
-export function ConfirmButton({ title }: Props) {
+export function ConfirmButton({ title, ...rest }: Props) {
     return (
-        <Container>
+        <Container {...rest}>
             <Title>{title}</Title>
         </Container>
     );

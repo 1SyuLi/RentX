@@ -1,4 +1,6 @@
 import React from 'react';
+import { ButtonProps, TouchableOpacityProps } from 'react-native';
+import { RectButtonProps, TouchableOpacity } from 'react-native-gesture-handler';
 import Gasoline from '../../assets/gasoline.svg';
 
 import {
@@ -24,13 +26,15 @@ interface CarData {
     thumbnail: string;
 }
 
-interface Props {
+interface Props extends TouchableOpacityProps {
     data: CarData;
 }
 
-export function Car({ data }: Props) {
+
+
+export function Car({ data, ...rest }: Props) {
     return (
-        <Container>
+        <Container {...rest}>
             <Details>
                 <Brand>{data.brand}</Brand>
                 <Name>{data.name}</Name>
@@ -55,6 +59,7 @@ export function Car({ data }: Props) {
                 source={{ uri: data.thumbnail }}
                 resizeMode='contain'
             />
+
         </Container>
     );
 }

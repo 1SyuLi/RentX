@@ -16,6 +16,7 @@ import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
 
 import { useTheme } from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
 
 import {
     Container,
@@ -47,6 +48,7 @@ import {
 export function SchedulingDetails() {
 
     const theme = useTheme();
+    const navigate = useNavigation<any>();
 
 
     return (
@@ -58,7 +60,7 @@ export function SchedulingDetails() {
 
 
             <Header>
-                <BackButton onPress={() => { }} />
+                <BackButton onPress={() => navigate.goBack()} />
             </Header>
 
 
@@ -124,7 +126,11 @@ export function SchedulingDetails() {
             </Content>
 
             <Footer>
-                <Button title='Confirmar' color={theme.colors.success} />
+                <Button
+                    title='Confirmar'
+                    color={theme.colors.success}
+                    onPress={() => navigate.navigate('SchedulingComplete')}
+                />
             </Footer>
         </Container>
     );

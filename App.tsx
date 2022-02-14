@@ -1,12 +1,8 @@
 import React from 'react';
 import AppLoading from 'expo-app-loading';
 
+import { Routes } from './src/routes';
 
-import { Home } from './src/Screens/Home';
-import { CarDetails } from './src/Screens/CarDetails';
-import { Scheduling } from './src/Screens/Scheduling';
-import { SchedulingDetails } from './src/Screens/SchedulingDetails';
-import { SchedulingComplete } from './src/Screens/SchedulingComplete';
 
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
@@ -22,6 +18,7 @@ import {
     Archivo_500Medium,
     Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo';
+
 
 export default function App() {
 
@@ -39,7 +36,7 @@ export default function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <SchedulingComplete />
+            <Routes />
         </ThemeProvider>
     )
 }

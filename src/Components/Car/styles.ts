@@ -1,10 +1,12 @@
 import styled from 'styled-components/native'
 import { RFValue } from 'react-native-responsive-fontsize';
+import { RectButton } from 'react-native-gesture-handler';
 
-export const Container = styled.View`
+
+export const Container = styled.TouchableOpacity`
     width: 100%;
     height: 126px;
-    background-color: ${({theme}) => theme.colors.background_secondary};
+    background-color: ${({ theme }) => theme.colors.background_secondary};
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -16,15 +18,15 @@ export const Container = styled.View`
 export const Details = styled.View``;
 
 export const Brand = styled.Text`
-    font-family: ${({theme}) => theme.fonts.secondary_500};
-    color: ${({theme}) => theme.colors.text_detail};
+    font-family: ${({ theme }) => theme.fonts.secondary_500};
+    color: ${({ theme }) => theme.colors.text_detail};
     font-size: ${RFValue(10)}px;
     text-transform: uppercase;
 `;
 
 export const Name = styled.Text`
-    font-family: ${({theme}) => theme.fonts.secondary_500};
-    color: ${({theme}) => theme.colors.text};
+    font-family: ${({ theme }) => theme.fonts.secondary_500};
+    color: ${({ theme }) => theme.colors.text};
     font-size: ${RFValue(15)}px;
 `;
 
@@ -40,15 +42,15 @@ export const Rent = styled.View`
 `;
 
 export const Period = styled.Text`
-    font-family: ${({theme}) => theme.fonts.secondary_500};
-    color: ${({theme}) => theme.colors.text_detail};
+    font-family: ${({ theme }) => theme.fonts.secondary_500};
+    color: ${({ theme }) => theme.colors.text_detail};
     font-size: ${RFValue(10)}px;
     text-transform: uppercase;
 `;
 
 export const Price = styled.Text`
-    font-family: ${({theme}) => theme.fonts.secondary_500};
-    color: ${({theme}) => theme.colors.main};
+    font-family: ${({ theme }) => theme.fonts.secondary_500};
+    color: ${({ theme }) => theme.colors.main};
     font-size: ${RFValue(15)}px;
 `;
 
