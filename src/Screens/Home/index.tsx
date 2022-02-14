@@ -22,7 +22,7 @@ export function Home() {
 
     const navigation = useNavigation<any>();
 
-    function HandleCarDetails() {
+    function handleCarDetails() {
         navigation.navigate('CarDetails');
     }
 
@@ -63,7 +63,7 @@ export function Home() {
                 keyExtractor={item => String(item)}
                 renderItem={({ item }) =>
                     <Car
-                        onPress={HandleCarDetails}
+                        onPress={handleCarDetails}
                         data={CarData}
                     />}
             />

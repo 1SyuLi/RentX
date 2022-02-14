@@ -28,7 +28,13 @@ import {
 export function Scheduling() {
 
     const theme = useTheme();
+
+
     const navigation = useNavigation<any>();
+
+    function handleConfirmScheduling() {
+        navigation.navigate('SchedulingDetails')
+    }
 
 
     return (
@@ -71,7 +77,7 @@ export function Scheduling() {
             </Content>
 
             <Footer>
-                <Button title='Confirmar' onPress={() => navigation.navigate('SchedulingDetails')} />
+                <Button title='Escolher período do aluguel' onPress={handleConfirmScheduling} />
             </Footer>
         </Container>
     );

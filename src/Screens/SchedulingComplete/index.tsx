@@ -23,6 +23,10 @@ export function SchedulingComplete() {
 
     const navigation = useNavigation<any>();
 
+    function handleConfirm() {
+        navigation.navigate('Home')
+    }
+
     return (
         <Container>
             <StatusBar
@@ -49,7 +53,7 @@ export function SchedulingComplete() {
             <Footer>
                 <ConfirmButton
                     title='OK'
-                    onPress={() => navigation.navigate('Home')}
+                    onPress={handleConfirm}
                 />
             </Footer>
         </Container>

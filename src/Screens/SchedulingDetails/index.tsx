@@ -50,6 +50,10 @@ export function SchedulingDetails() {
     const theme = useTheme();
     const navigate = useNavigation<any>();
 
+    function handleCompleteRental() {
+        navigate.navigate('SchedulingComplete')
+    }
+
 
     return (
         <Container>
@@ -127,9 +131,9 @@ export function SchedulingDetails() {
 
             <Footer>
                 <Button
-                    title='Confirmar'
+                    title='Alugar agora'
                     color={theme.colors.success}
-                    onPress={() => navigate.navigate('SchedulingComplete')}
+                    onPress={handleCompleteRental}
                 />
             </Footer>
         </Container>
