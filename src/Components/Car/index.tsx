@@ -1,7 +1,8 @@
 import React from 'react';
-import { ButtonProps, TouchableOpacityProps } from 'react-native';
-import { RectButtonProps, TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacityProps } from 'react-native';
 import Gasoline from '../../assets/gasoline.svg';
+
+import { carDTO } from '../../dtos/carDto';
 
 import {
     Container,
@@ -16,18 +17,10 @@ import {
     CarImage,
 } from './styles';
 
-interface CarData {
-    brand: string;
-    name: string;
-    rent: {
-        period: string;
-        price: number;
-    },
-    thumbnail: string;
-}
+
 
 interface Props extends TouchableOpacityProps {
-    data: CarData;
+    data: carDTO;
 }
 
 
