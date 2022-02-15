@@ -17,6 +17,7 @@ import {
 } from '../../Components/Calendar';
 
 import ArrowSvg from '../../assets/arrow.svg';
+import { carDTO } from '../../dtos/carDto';
 
 
 
@@ -31,8 +32,12 @@ import {
     Content,
     Footer,
 } from './styles';
-import { ParamsProps } from '../CarDetails';
 
+
+
+interface ParamsProps {
+    car: carDTO
+}
 
 interface RentalPeriodProps {
     startFormatted: string;

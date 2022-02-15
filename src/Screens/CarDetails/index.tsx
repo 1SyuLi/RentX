@@ -27,7 +27,7 @@ import {
     Footer,
 } from './styles';
 
-export interface ParamsProps {
+interface ParamsProps {
     car: carDTO
 }
 
