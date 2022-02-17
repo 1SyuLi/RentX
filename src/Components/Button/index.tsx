@@ -9,11 +9,17 @@ import {
 interface Props extends TouchableOpacityProps {
     title: string;
     color?: string;
+    disable?: boolean;
 }
 
-export function Button({ title, color, ...rest }: Props) {
+export function Button({ title, color, disable = false, ...rest }: Props) {
     return (
-        <Container {...rest} color={color}>
+        <Container
+            disabled={disable}
+            {...rest}
+            color={color}
+            style={{ opacity: disable ? .5 : 1 }}
+        >
             <Title>{title}</Title>
         </Container>
     );
