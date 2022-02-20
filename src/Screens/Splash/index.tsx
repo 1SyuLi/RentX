@@ -4,6 +4,7 @@ import BrandSvg from '../../assets/brand.svg';
 import LogoSvg from '../../assets/logo.svg';
 import { useTheme } from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
+import { View } from 'react-native';
 
 import Animated, {
     useAnimatedStyle,
