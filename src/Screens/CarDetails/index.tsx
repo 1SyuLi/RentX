@@ -5,8 +5,17 @@ import { BackButton } from '../../Components/BackButton';
 import { ImageSlider } from '../../Components/ImageSlider';
 import { Accessory } from '../../Components/Accessory';
 import { Button } from '../../Components/Button';
-import { carDTO } from '../../dtos/carDto';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
+import Animated, {
+    useAnimatedScrollHandler,
+    useSharedValue,
+    useAnimatedStyle,
+    interpolate,
+    Extrapolate,
+} from 'react-native-reanimated';
+
+import { carDTO } from '../../dtos/carDto';
 import { getAcessoryIcon } from '../../utils/getAcessoryIcon';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -14,7 +23,6 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import {
     Container,
     Header,
-    Content,
     Details,
     Description,
     Brand,
@@ -37,12 +45,30 @@ export function CarDetails() {
     const route = useRoute();
     const { car } = route.params as ParamsProps;
 
+
+    const scrollY = useSharedValue(0);
+    const scrollHandler = useAnimatedScrollHandler(event => {
+        scrollY.value = event.contentOffset.y;
+        console.log(event.contentOffset.y);
+    })
+
+    const headerStyleAnimation = useAnimatedStyle(() => {
+        return {
+            height: interpolate(
+                scrollY.value,
+                [0, 200],
+                [200, 70],
+                Extrapolate.CLAMP
+            )
+        }
+    })
+
+
     function handleConfirmRental() {
         navigation.navigate('Scheduling', {
             car
         });
     }
-
 
     return (
         <Container>
@@ -51,17 +77,26 @@ export function CarDetails() {
                 backgroundColor="transparent"
             />
 
+            <Animated.View
+                style={[headerStyleAnimation]}
+            >
+                <Header>
+                    <BackButton onPress={() => navigation.goBack()} />
+                </Header>
 
-            <Header>
-                <BackButton onPress={() => navigation.goBack()} />
-            </Header>
+                <ImageSlider
+                    imagesUrl={car.photos}
+                />
+            </Animated.View>
 
-
-            <ImageSlider
-                imagesUrl={car.photos}
-            />
-
-            <Content>
+            <Animated.ScrollView
+                contentContainerStyle={{
+                    paddingHorizontal: 24,
+                    paddingTop: getStatusBarHeight(),
+                }}
+                showsVerticalScrollIndicator={false}
+                onScroll={scrollHandler}
+            >
                 <Details>
                     <Description>
                         <Brand>{car.brand}</Brand>
@@ -84,8 +119,15 @@ export function CarDetails() {
                     ))}
                 </Accessories>
 
-                <About>{car.about}</About>
-            </Content>
+                <About>
+                    {car.about}
+                    {car.about}
+                    {car.about}
+                    {car.about}
+                    {car.about}
+                    {car.about}
+                </About>
+            </Animated.ScrollView>
 
             <Footer>
                 <Button title='Escolha período do aluguel' onPress={handleConfirmRental} />
