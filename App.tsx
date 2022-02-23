@@ -18,7 +18,6 @@ import {
     Archivo_500Medium,
     Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo';
-import { StatusBar } from 'react-native';
 
 
 export default function App() {
