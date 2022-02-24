@@ -45,21 +45,3 @@ export const CardList = styled(
    },
    showsVerticalScrollIndicator: false,
 })``;
-
-
-export const MycarsButton = styled.TouchableOpacity.attrs({
-   activeOpacity: 0.5,
-}) <ButtonMycarsProps>`
-
-   width: 60px;
-   height: 60px;
-   background-color: ${({ theme }) => theme.colors.main};
-
-   align-items: center;
-   justify-content: center;
-   border-radius: 30px;
-
-   position: absolute;
-   bottom: 13px;
-   right: 22px;
-`;

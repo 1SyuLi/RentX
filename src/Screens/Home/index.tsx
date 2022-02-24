@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { useNavigation, } from '@react-navigation/native';
-import { StatusBar, TouchableOpacity, TouchableOpacityProps, StyleSheet } from 'react-native';
+import { StatusBar, TouchableOpacity, StyleSheet, BackHandler } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 
@@ -21,16 +21,16 @@ import Animated, {
     withSpring,
 } from 'react-native-reanimated';
 
-const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity);
-
 import {
     Container,
     Header,
     TotalCars,
     HeaderContent,
     CardList,
-    MycarsButton
 } from './styles';
+
+const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity);
+
 
 export function Home() {
 
@@ -58,6 +58,12 @@ export function Home() {
 
         fetchCars();
     }, []);
+
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', () => {
+            return true
+        })
+    }, [])
 
     const navigation = useNavigation<any>();
 
@@ -143,6 +149,7 @@ export function Home() {
                     ]}
                 >
                     <ButtonAnimated
+                        activeOpacity={0.5}
                         onPress={handleOpenMycars}
                         style={[styles.button, { backgroundColor: theme.colors.main }]}
                     >
