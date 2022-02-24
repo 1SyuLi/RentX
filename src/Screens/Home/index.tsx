@@ -8,6 +8,8 @@ import { PanGestureHandler } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import Logo from '../../assets/logo.svg';
 
+import { LoadAnimation } from '../../Components/LoadAnimation';
+
 import { Car } from '../../Components/Car';
 import { Load } from '../../Components/Load';
 
@@ -133,7 +135,7 @@ export function Home() {
 
 
             {
-                loading === true ? <Load /> :
+                loading === true ? <LoadAnimation /> :
                     <CardList data={cars} keyExtractor={item => item.id}
                         renderItem={
                             ({ item }) => <Car onPress={() => handleCarDetails(item)} data={item} />

@@ -12,6 +12,8 @@ import { Car } from '../../Components/Car';
 import { api } from '../../services/api';
 import { carDTO } from './../../dtos/carDTO';
 
+import { LoadAnimation } from '../../Components/LoadAnimation';
+
 import {
     Container,
     Header,
@@ -89,7 +91,7 @@ export function Mycars() {
                 </SubTitle>
             </Header>
 
-            {loading ? <Load /> :
+            {loading ? <LoadAnimation /> :
                 <Content>
                     <Appointments>
                         <AppointmentsTitle>
