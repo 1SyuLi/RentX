@@ -7,6 +7,7 @@ import { SchedulingComplete } from '../Screens/SchedulingComplete';
 import { SchedulingDetails } from '../Screens/SchedulingDetails';
 import { Mycars } from '../Screens/Mycars';
 import { Splash } from '../Screens/Splash';
+import { SignIn } from '../Screens/SignIn';
 
 import { createStackNavigator } from '@react-navigation/stack';
 const { Navigator, Screen } = createStackNavigator();
@@ -18,7 +19,7 @@ export function StackRoutes() {
 
     return (
         <Navigator
-            initialRouteName='Splash'
+            initialRouteName='SignIn'
             screenOptions={{
                 headerShown: false,
             }}
@@ -59,6 +60,11 @@ export function StackRoutes() {
             <Screen
                 name='Mycars'
                 component={Mycars}
+            />
+
+            <Screen
+                name='SignIn'
+                component={SignIn}
             />
         </Navigator>
     )

@@ -16,8 +16,12 @@ export const Container = styled.TouchableOpacity<ButtonProps>`
 `;
 
 
-export const Title = styled.Text`
+interface TitleProps {
+    light: boolean;
+}
+
+export const Title = styled.Text<TitleProps>`
     font-family: ${({ theme }) => theme.fonts.primary_500};
     font-size: ${RFValue(15)}px;
-    color: ${({ theme }) => theme.colors.shape};
+    color: ${({ theme, light }) => light ? theme.colors.header : theme.colors.shape};
 `;
