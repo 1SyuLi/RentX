@@ -13,6 +13,7 @@ export const Container = styled.TouchableOpacity<ButtonProps>`
    align-items: center;
    justify-content: center;
    background-color: ${({ color, theme }) => color ? color : theme.colors.main};
+   margin-bottom: 8px;
 `;
 
 

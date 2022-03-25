@@ -27,5 +27,10 @@ export const SubTitle = styled.Text`
     color: ${({ theme }) => theme.colors.text};
 `;
 
+export const Form = styled.View`
+    width: 100%;
+    margin: 64px 0px;
+`;
+
 export const Footer = styled.View``;
 
