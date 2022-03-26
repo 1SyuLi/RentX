@@ -23,7 +23,7 @@ export function Input({ iconName, ...rest }: InputProps) {
     return (
         <Container>
             <IconContainer>
-                <Feather name={iconName} size={24} color={theme.colors.title} />
+                <Feather name={iconName} size={24} color={theme.colors.text_detail} />
             </IconContainer>
 
 
