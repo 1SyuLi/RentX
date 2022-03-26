@@ -5,7 +5,9 @@ import { TextInputProps } from 'react-native';
 
 
 import {
-    Container
+    Container,
+    InputText,
+    IconContainer
 } from './styles';
 
 
@@ -13,14 +15,19 @@ interface InputProps extends TextInputProps {
     iconName: React.ComponentProps<typeof Feather>['name'];
 }
 
-export function Input({ iconName }: InputProps) {
+export function Input({ iconName, ...rest }: InputProps) {
 
     const theme = useTheme();
 
 
     return (
         <Container>
-            <Feather name={iconName} size={24} color={theme.colors.header} />
+            <IconContainer>
+                <Feather name={iconName} size={24} color={theme.colors.title} />
+            </IconContainer>
+
+
+            <InputText {...rest} />
         </Container>
     );
 }
