@@ -3,7 +3,7 @@ import { TouchableOpacityProps } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 
-interface ButtonProps extends TouchableOpacityProps {
+interface ButtonProps {
     color?: string;
 }
 
