@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import { useTheme } from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '../../Components/Button';
 import { Input } from './Input';
@@ -24,9 +25,12 @@ import {
     Footer,
 } from './styles';
 
+
 export function SignIn() {
 
     const theme = useTheme();
+    const navigation = useNavigation<any>();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -53,6 +57,10 @@ export function SignIn() {
             }
         }
 
+    }
+
+    function handleNewAccount() {
+        navigation.navigate('SignUpFirstStep')
     }
 
     return (
@@ -100,7 +108,7 @@ export function SignIn() {
                             color={theme.colors.background_secondary}
                             light
                             disable={false}
-                            onPress={() => { }}
+                            onPress={handleNewAccount}
                             loading={false}
                         />
                     </Footer>

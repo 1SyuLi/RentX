@@ -8,6 +8,7 @@ import { SchedulingDetails } from '../Screens/SchedulingDetails';
 import { Mycars } from '../Screens/Mycars';
 import { Splash } from '../Screens/Splash';
 import { SignIn } from '../Screens/SignIn';
+import { SignUpFirstStep } from '../Screens/SignUp/SignUpFirstStep';
 
 import { createStackNavigator } from '@react-navigation/stack';
 const { Navigator, Screen } = createStackNavigator();
@@ -66,6 +67,12 @@ export function StackRoutes() {
                 name='SignIn'
                 component={SignIn}
             />
+
+            <Screen
+                name='SignUpFirstStep'
+                component={SignUpFirstStep}
+            />
+
         </Navigator>
     )
 }
