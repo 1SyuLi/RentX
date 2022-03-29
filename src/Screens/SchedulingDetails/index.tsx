@@ -68,7 +68,7 @@ export function SchedulingDetails() {
     const route = useRoute();
     const { car, dates } = route.params as ParamsProps;
 
-    const navigate = useNavigation<any>();
+    const navigation = useNavigation<any>();
 
 
     const rentalTotal = Number(dates.length * car.rent.price);
@@ -96,7 +96,11 @@ export function SchedulingDetails() {
             id: car.id,
             unavailable_dates,
         })
-            .then(() => navigate.navigate('SchedulingComplete'))
+            .then(() => navigation.navigate('Confirmation', {
+                title: 'Carro alugado!',
+                message: `Agora você só precisa ir\naté a concessionária da RENTX\npegar o seu automóvel.`,
+                nextScreenRoute: 'Home'
+            }))
             .catch(() => {
                 Alert.alert('Não foi possivel confirmar o agendamento');
                 setLoading(false);
@@ -121,7 +125,7 @@ export function SchedulingDetails() {
 
 
             <Header>
-                <BackButton onPress={() => navigate.goBack()} />
+                <BackButton onPress={() => navigation.goBack()} />
             </Header>
 
 

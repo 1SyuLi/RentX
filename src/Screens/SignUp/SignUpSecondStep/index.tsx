@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     KeyboardAvoidingView,
     TouchableWithoutFeedback,
     Keyboard,
+    Alert,
 } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 
 import { BackButton } from '../../../Components/BackButton';
 import { Bullet } from '../../../Components/Bullet';
 import { PasswordInput } from '../../SignIn/PasswordInput';
 import { Button } from '../../../Components/Button';
+
+import { Confirmation } from '../../Confirmation';
 
 
 import {
@@ -25,13 +28,44 @@ import {
 } from './styles';
 
 
+interface Params {
+    user: {
+        name: string;
+        email: string;
+        driverLicense: string;
+    }
+}
+
 export function SignUpSecondStep() {
 
+    const [password, SetPassword] = useState('');
+    const [passwordConfirm, SetPasswordConfirm] = useState('');
+
+    const route = useRoute();
+    const { user } = route.params as Params;
+
     const theme = useTheme();
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
 
     function handleBack() {
         navigation.goBack();
+    }
+
+    function handleRegister() {
+        if (!password || !passwordConfirm) {
+            return Alert.alert('Informe todos os campos.');
+        };
+
+        if (password != passwordConfirm) {
+            return Alert.alert('As senhas não são iguais.');
+        };
+
+
+        navigation.navigate('Confirmation', {
+            title: 'Conta criada!',
+            message: `Agora é só fazer login\ne aproveitar.`,
+            nextScreenRoute: 'SignIn'
+        });
     }
 
     return (
@@ -59,18 +93,26 @@ export function SignUpSecondStep() {
                         <PasswordInput
                             iconName='lock'
                             placeholder='Senha'
+                            onChangeText={SetPassword}
+                            value={password}
                         />
 
                         <PasswordInput
                             iconName='lock'
                             placeholder='Repetir Senha'
+                            onChangeText={SetPasswordConfirm}
+                            value={passwordConfirm}
                         />
 
                     </Form>
 
-                    <Button title='Cadastrar' color={theme.colors.success} />
+                    <Button
+                        title='Cadastrar'
+                        color={theme.colors.success}
+                        onPress={handleRegister}
+                    />
                 </Container>
             </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
-    );
+    )
 }

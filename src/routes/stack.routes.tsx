@@ -3,7 +3,7 @@ import React from 'react';
 import { Home } from '../Screens/Home';
 import { CarDetails } from '../Screens/CarDetails';
 import { Scheduling } from '../Screens/Scheduling';
-import { SchedulingComplete } from '../Screens/SchedulingComplete';
+import { Confirmation } from '../Screens/Confirmation';
 import { SchedulingDetails } from '../Screens/SchedulingDetails';
 import { Mycars } from '../Screens/Mycars';
 import { Splash } from '../Screens/Splash';
@@ -50,8 +50,8 @@ export function StackRoutes() {
             />
 
             <Screen
-                name="SchedulingComplete"
-                component={SchedulingComplete}
+                name="Confirmation"
+                component={Confirmation}
             />
 
             <Screen
