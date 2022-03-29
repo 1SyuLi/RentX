@@ -27,7 +27,7 @@ export function AppStackRoutes() {
             }}
         >
             <Screen
-                name="Home"
+                name="HomeStack"
                 component={Home}
                 options={{
                     gestureEnabled: false,
