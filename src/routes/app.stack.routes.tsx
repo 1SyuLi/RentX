@@ -16,7 +16,7 @@ const { Navigator, Screen } = createStackNavigator();
 
 
 
-export function StackRoutes() {
+export function AppStackRoutes() {
 
 
     return (
@@ -26,11 +26,6 @@ export function StackRoutes() {
                 headerShown: false,
             }}
         >
-            <Screen
-                name='Splash'
-                component={Splash}
-            />
-
             <Screen
                 name="Home"
                 component={Home}
@@ -63,22 +58,6 @@ export function StackRoutes() {
                 name='Mycars'
                 component={Mycars}
             />
-
-            <Screen
-                name='SignIn'
-                component={SignIn}
-            />
-
-            <Screen
-                name='SignUpFirstStep'
-                component={SignUpFirstStep}
-            />
-
-            <Screen
-                name='SignUpSecondStep'
-                component={SignUpSecondStep}
-            />
-
 
 
         </Navigator>
