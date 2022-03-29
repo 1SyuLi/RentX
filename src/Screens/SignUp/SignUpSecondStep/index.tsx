@@ -10,7 +10,7 @@ import { useTheme } from 'styled-components';
 
 import { BackButton } from '../../../Components/BackButton';
 import { Bullet } from '../../../Components/Bullet';
-import { Input } from '../../SignIn/Input';
+import { PasswordInput } from '../../SignIn/PasswordInput';
 import { Button } from '../../../Components/Button';
 
 
@@ -25,17 +25,13 @@ import {
 } from './styles';
 
 
-export function SignUpFirstStep() {
+export function SignUpSecondStep() {
 
     const theme = useTheme();
-    const navigation = useNavigation<any>();
+    const navigation = useNavigation();
 
     function handleBack() {
         navigation.goBack();
-    }
-
-    function handleNextStep() {
-        navigation.navigate('SignUpSecondStep');
     }
 
     return (
@@ -58,27 +54,21 @@ export function SignUpFirstStep() {
                     </SubTitle>
 
                     <Form>
-                        <FormTitle>1. Dados</FormTitle>
+                        <FormTitle>2. Senha</FormTitle>
 
-                        <Input
-                            iconName='user'
-                            placeholder='Nome'
+                        <PasswordInput
+                            iconName='lock'
+                            placeholder='Senha'
                         />
 
-                        <Input
-                            iconName='mail'
-                            placeholder='E-mail'
-                            keyboardType='email-address'
+                        <PasswordInput
+                            iconName='lock'
+                            placeholder='Repetir Senha'
                         />
 
-                        <Input
-                            iconName='credit-card'
-                            placeholder='CNH'
-                            keyboardType='numeric'
-                        />
                     </Form>
 
-                    <Button title='Próximo' onPress={handleNextStep} />
+                    <Button title='Cadastrar' color={theme.colors.success} />
                 </Container>
             </TouchableWithoutFeedback>
         </KeyboardAvoidingView>

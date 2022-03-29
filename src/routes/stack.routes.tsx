@@ -9,6 +9,7 @@ import { Mycars } from '../Screens/Mycars';
 import { Splash } from '../Screens/Splash';
 import { SignIn } from '../Screens/SignIn';
 import { SignUpFirstStep } from '../Screens/SignUp/SignUpFirstStep';
+import { SignUpSecondStep } from '../Screens/SignUp/SignUpSecondStep';
 
 import { createStackNavigator } from '@react-navigation/stack';
 const { Navigator, Screen } = createStackNavigator();
@@ -72,6 +73,13 @@ export function StackRoutes() {
                 name='SignUpFirstStep'
                 component={SignUpFirstStep}
             />
+
+            <Screen
+                name='SignUpSecondStep'
+                component={SignUpSecondStep}
+            />
+
+
 
         </Navigator>
     )
