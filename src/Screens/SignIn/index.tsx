@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 
 import {
@@ -26,6 +26,8 @@ import {
     Form,
     Footer,
 } from './styles';
+
+import { database } from '../../database';
 
 
 export function SignIn() {
@@ -66,6 +68,16 @@ export function SignIn() {
     function handleNewAccount() {
         navigation.navigate('SignUpFirstStep')
     }
+
+    useEffect(() => {
+        async function loadData() {
+            const usersCollection = database.get('users');
+            const users = await usersCollection.query().fetch()
+            console.log(users)
+        }
+
+        loadData();
+    }, [])
 
     return (
         <KeyboardAvoidingView behavior='position' enabled>

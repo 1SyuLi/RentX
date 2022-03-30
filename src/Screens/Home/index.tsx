@@ -13,13 +13,6 @@ import { Car } from '../../Components/Car';
 import { api } from '../../services/api';
 import { carDTO } from '../../dtos/carDto';
 
-import Animated, {
-    useAnimatedStyle,
-    useSharedValue,
-    useAnimatedGestureHandler,
-    withSpring,
-} from 'react-native-reanimated';
-
 import {
     Container,
     Header,

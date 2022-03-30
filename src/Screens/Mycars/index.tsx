@@ -29,6 +29,7 @@ import {
     CarFooterPeriod,
     CarFooterDate,
 } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 interface CarsProps {
     id: string;
@@ -47,13 +48,14 @@ export function Mycars() {
     const theme = useTheme();
 
     const navigation = useNavigation();
+    const { user } = useAuth();
 
 
     useEffect(() => {
         async function fetchCars() {
             try {
 
-                const response = await api.get('/schedules_byuser?user_id=1');
+                const response = await api.get(`/schedules_byuser?user_id=${user.id}`);
                 setCars(response.data);
 
             } catch (error) {
