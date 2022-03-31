@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 
 import {
@@ -17,6 +17,7 @@ import { Input } from './Input';
 import { PasswordInput } from './PasswordInput';
 
 import { useAuth } from '../../hooks/auth';
+import { database } from '../../database';
 
 import {
     Container,
@@ -27,7 +28,6 @@ import {
     Footer,
 } from './styles';
 
-import { database } from '../../database';
 
 
 export function SignIn() {
@@ -52,6 +52,8 @@ export function SignIn() {
 
             await schema.validate({ email, password });
             signIn({ email, password });
+
+
         } catch (error) {
             if (error instanceof Yup.ValidationError) {
                 Alert.alert('Opa', error.message)
@@ -68,16 +70,6 @@ export function SignIn() {
     function handleNewAccount() {
         navigation.navigate('SignUpFirstStep')
     }
-
-    useEffect(() => {
-        async function loadData() {
-            const usersCollection = database.get('users');
-            const users = await usersCollection.query().fetch()
-            console.log(users)
-        }
-
-        loadData();
-    }, [])
 
     return (
         <KeyboardAvoidingView behavior='position' enabled>
