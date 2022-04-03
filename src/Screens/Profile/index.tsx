@@ -32,7 +32,7 @@ type Option = 'dataEdit' | 'passwordEdit';
 
 export function Profile() {
 
-    const { user } = useAuth();
+    const { user, signOut } = useAuth();
 
 
     const theme = useTheme();
@@ -44,8 +44,6 @@ export function Profile() {
     const [email, setEmail] = useState<string>(user.email);
     const [driver_license, setDriverLicense] = useState<string>(user.driver_license);
 
-
-    function handleSignOut() { };
 
     function handleGoBack() {
         navigation.goBack();
@@ -81,7 +79,7 @@ export function Profile() {
 
                     <HeaderTitle>Editar Perfil</HeaderTitle>
 
-                    <LoggoutButton onPress={handleSignOut}>
+                    <LoggoutButton onPress={signOut}>
                         <Feather name='power' size={24} color={theme.colors.shape} />
                     </LoggoutButton>
                 </HeaderTop>
