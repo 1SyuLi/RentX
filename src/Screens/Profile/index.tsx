@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StatusBar, TouchableOpacity } from 'react-native';
+import { Alert, StatusBar, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import { useTheme } from 'styled-components';
 import { BackButton } from '../../Components/BackButton';
 import { Input } from '../SignIn/Input';
+import { Button } from '../../Components/Button';
 import { PasswordInput } from '../SignIn/PasswordInput';
 
 import * as ImagePicker from 'expo-image-picker';
+import * as Yup from 'yup';
 
 import {
     Container,
@@ -32,7 +34,7 @@ type Option = 'dataEdit' | 'passwordEdit';
 
 export function Profile() {
 
-    const { user, signOut } = useAuth();
+    const { user, signOut, updatedUser } = useAuth();
 
 
     const theme = useTheme();
@@ -67,6 +69,37 @@ export function Profile() {
 
         if (result.uri) {
             setAvatar(result.uri);
+        }
+    }
+
+    async function handleProfileUpdate() {
+        try {
+            const schema = Yup.object().shape({
+                name: Yup.string().required('Nome é obrigatório'),
+                driver_license: Yup.string().required('CNH é obrigatório'),
+            });
+
+            const data = { name, driver_license };
+            await schema.validate(data);
+
+            await updatedUser({
+                id: user.id,
+                user_id: user.user_id,
+                name,
+                email: user.email,
+                driver_license,
+                avatar,
+                token: user.token,
+            });
+
+            Alert.alert('Perfil atualizado com sucesso!');
+
+        } catch (error) {
+            if (error instanceof Yup.ValidationError) {
+                Alert.alert('Opa', error.message);
+            } else {
+                Alert.alert('Opa', 'Algo deu errado');
+            }
         }
     }
 
@@ -167,6 +200,10 @@ export function Profile() {
                         </Section>
                 }
 
+                <Button
+                    title='Salvar alterações'
+                    onPress={handleProfileUpdate}
+                />
             </Content>
         </Container>
     );
