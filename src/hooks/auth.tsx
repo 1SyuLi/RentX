@@ -70,7 +70,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         try {
             const userCollection = database.get<ModelUser>('users');
             await database.write(async () => {
-                const userSelected = await userCollection.find(user.id);
+                const userSelected = await userCollection.find(data.id);
                 await userSelected.update((userData) => {
                     userData.name = user.name,
                         userData.driver_license = user.driver_license,
@@ -80,6 +80,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
             setData(user);
         } catch (error: any) {
+            console.log(error);
             throw new Error(error);
         }
     }

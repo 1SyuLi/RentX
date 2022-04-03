@@ -95,12 +95,32 @@ export function Profile() {
             Alert.alert('Perfil atualizado com sucesso!');
 
         } catch (error) {
+            console.log(error);
+
             if (error instanceof Yup.ValidationError) {
                 Alert.alert('Opa', error.message);
             } else {
                 Alert.alert('Opa', 'Algo deu errado');
             }
         }
+    }
+
+    function handleSignOut() {
+        Alert.alert(
+            'Tem certeza?',
+            'Se você sair, irá precisar de internet para fazer o login novamente',
+            [
+                {
+                    text: 'Cancelar',
+                    onPress: () => { },
+                    style: 'cancel',
+                },
+                {
+                    text: 'Sim',
+                    onPress: () => signOut(),
+                }
+            ]
+        )
     }
 
     return (
@@ -112,7 +132,7 @@ export function Profile() {
 
                     <HeaderTitle>Editar Perfil</HeaderTitle>
 
-                    <LoggoutButton onPress={signOut}>
+                    <LoggoutButton onPress={handleSignOut}>
                         <Feather name='power' size={24} color={theme.colors.shape} />
                     </LoggoutButton>
                 </HeaderTop>
