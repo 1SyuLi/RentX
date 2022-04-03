@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 import { useNavigation, } from '@react-navigation/native';
-import { StatusBar, TouchableOpacity, } from 'react-native';
+import { Alert, StatusBar, TouchableOpacity, } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import Logo from '../../assets/logo.svg';
@@ -12,6 +12,8 @@ import { Car } from '../../Components/Car';
 
 import { api } from '../../services/api';
 import { carDTO } from '../../dtos/carDto';
+
+import { useNetInfo } from '@react-native-community/netinfo';
 
 import {
     Container,
@@ -29,6 +31,13 @@ export function Home() {
     const [loading, setLoading] = useState(true);
 
     const theme = useTheme();
+
+    const netInfo = useNetInfo();
+    const navigation = useNavigation<any>();
+
+    function handleCarDetails(car: carDTO) {
+        navigation.navigate('CarDetails', { car });
+    };
 
     useEffect(() => {
 
@@ -58,11 +67,13 @@ export function Home() {
         }
     }, []);
 
-    const navigation = useNavigation<any>();
-
-    function handleCarDetails(car: carDTO) {
-        navigation.navigate('CarDetails', { car });
-    };
+    useEffect(() => {
+        if (netInfo.isConnected) {
+            Alert.alert('Internet', 'Você está com internet!');
+        } else {
+            Alert.alert('Internet', 'Você está sem internet!');
+        }
+    }, [netInfo.isConnected]);
 
 
     return (
