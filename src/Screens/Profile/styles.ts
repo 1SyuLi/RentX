@@ -9,7 +9,7 @@ interface OptionsProps {
 }
 
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
    flex: 1;
    background-color: ${({ theme }) => theme.colors.background_primary};
 `;
@@ -97,5 +97,7 @@ export const OptionTitle = styled.Text<OptionsProps>`
     color: ${({ theme, active }) =>
         active ? theme.colors.header : theme.colors.text_detail};
 `;
+
+export const Section = styled.View``;
 
 

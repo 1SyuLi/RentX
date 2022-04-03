@@ -5,6 +5,8 @@ import { Feather } from '@expo/vector-icons';
 
 import { useTheme } from 'styled-components';
 import { BackButton } from '../../Components/BackButton';
+import { Input } from '../SignIn/Input';
+import { PasswordInput } from '../SignIn/PasswordInput';
 
 import {
     Container,
@@ -19,12 +21,16 @@ import {
     Options,
     Option,
     OptionTitle,
+    Section
 } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 
 type Option = 'dataEdit' | 'passwordEdit';
 
 export function Profile() {
+
+    const { user } = useAuth();
 
 
     const theme = useTheme();
@@ -85,6 +91,56 @@ export function Profile() {
                         </OptionTitle>
                     </Option>
                 </Options>
+
+                {
+                    option === 'dataEdit' ?
+                        <Section>
+                            <Input
+                                iconName='user'
+                                placeholder='Nome'
+                                autoCorrect={false}
+                                autoCapitalize='none'
+                                defaultValue={user.name}
+                            />
+
+                            <Input
+                                iconName='mail'
+                                editable={false}
+                                autoCorrect={false}
+                                autoCapitalize='none'
+                                defaultValue={user.email}
+                            />
+
+                            <Input
+                                iconName='credit-card'
+                                placeholder='CNH'
+                                keyboardType='numeric'
+                                autoCapitalize='none'
+                                defaultValue={user.driver_license}
+                            />
+                        </Section> :
+                        <Section>
+                            <PasswordInput
+                                iconName='lock'
+                                placeholder='Senha atual'
+                                autoCorrect={false}
+                                autoCapitalize='none'
+                            />
+                            <PasswordInput
+                                iconName='lock'
+                                placeholder='Nova senha'
+                                autoCorrect={false}
+                                autoCapitalize='none'
+                            />
+                            <PasswordInput
+                                iconName='lock'
+                                placeholder='Confirmar senha'
+                                autoCorrect={false}
+                                autoCapitalize='none'
+                            />
+                        </Section>
+                }
+
             </Content>
         </Container>
     );
