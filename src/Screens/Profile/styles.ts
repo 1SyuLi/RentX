@@ -52,7 +52,7 @@ export const Photo = styled.Image`
     border-radius: 90px;
 `;
 
-export const PhotoButton = styled(TouchableOpacity)`
+export const PhotoButton = styled.TouchableOpacity`
     width: 40px;
     height: 40px;
     background-color: ${({ theme }) => theme.colors.main};
@@ -60,8 +60,8 @@ export const PhotoButton = styled(TouchableOpacity)`
     justify-content: center;
 
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    right: 0px;
+    top: 20px;
 `;
 
 

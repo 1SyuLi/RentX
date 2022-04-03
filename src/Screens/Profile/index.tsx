@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StatusBar } from 'react-native';
+import { StatusBar, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import { useTheme } from 'styled-components';
 import { BackButton } from '../../Components/BackButton';
 import { Input } from '../SignIn/Input';
 import { PasswordInput } from '../SignIn/PasswordInput';
+
+import * as ImagePicker from 'expo-image-picker';
 
 import {
     Container,
@@ -37,6 +39,11 @@ export function Profile() {
     const navigation = useNavigation();
 
     const [option, setOption] = useState<Option>('dataEdit');
+    const [avatar, setAvatar] = useState<string>(user.avatar);
+    const [name, setName] = useState<string>(user.name);
+    const [email, setEmail] = useState<string>(user.email);
+    const [driver_license, setDriverLicense] = useState<string>(user.driver_license);
+
 
     function handleSignOut() { };
 
@@ -46,6 +53,23 @@ export function Profile() {
 
     function handleOption(option: Option) {
         setOption(option);
+    }
+
+    async function handleChangeAvatar() {
+        const result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4, 4],
+            quality: 1
+        });
+
+        if (result.cancelled) {
+            return;
+        }
+
+        if (result.uri) {
+            setAvatar(result.uri);
+        }
     }
 
     return (
@@ -63,9 +87,9 @@ export function Profile() {
                 </HeaderTop>
 
                 <ImageContainer>
-                    <Photo source={{ uri: 'https://github.com/1syuli.png' }} />
+                    {!!avatar && <Photo source={{ uri: avatar }} />}
 
-                    <PhotoButton onPress={() => { }}>
+                    <PhotoButton onPress={handleChangeAvatar}>
                         <Feather name='camera' size={24} color={theme.colors.shape} />
                     </PhotoButton>
                 </ImageContainer>
@@ -101,6 +125,7 @@ export function Profile() {
                                 autoCorrect={false}
                                 autoCapitalize='none'
                                 defaultValue={user.name}
+                                onChangeText={setName}
                             />
 
                             <Input
@@ -109,6 +134,7 @@ export function Profile() {
                                 autoCorrect={false}
                                 autoCapitalize='none'
                                 defaultValue={user.email}
+                                onChangeText={setEmail}
                             />
 
                             <Input
@@ -117,8 +143,10 @@ export function Profile() {
                                 keyboardType='numeric'
                                 autoCapitalize='none'
                                 defaultValue={user.driver_license}
+                                onChangeText={setDriverLicense}
                             />
-                        </Section> :
+                        </Section>
+                        :
                         <Section>
                             <PasswordInput
                                 iconName='lock'
